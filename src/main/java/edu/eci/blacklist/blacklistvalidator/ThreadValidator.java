@@ -16,6 +16,8 @@ public class ThreadValidator extends Thread {
 
     private final String ipaddress;
 
+    private final HostBlackListsValidator hostValidator;
+
     /**
      * Check the given host's IP address in the black lists between Lower Limit and Upper Limit, and counts the
      * number of occurrences of the IP address in the lists.
@@ -23,10 +25,11 @@ public class ThreadValidator extends Thread {
      * @param upperLimit Upper bound of the black list collection to check
      * @param ipaddress IP address to look for on the black lists
      */
-    public ThreadValidator(int lowerLimit, int upperLimit, String ipaddress) {
+    public ThreadValidator(int lowerLimit, int upperLimit, String ipaddress, HostBlackListsValidator hostValidator) {
         this.lowerLimit = lowerLimit;
         this.upperLimit = upperLimit;
         this.ipaddress = ipaddress;
+        this.hostValidator = hostValidator;
         blackListOcurrences = new LinkedList<>();
     }
 
@@ -35,11 +38,23 @@ public class ThreadValidator extends Thread {
         HostBlacklistsDataSourceFacade skds = HostBlacklistsDataSourceFacade.getInstance();
         checkedListsCount = 0;
 
-        for (int i=lowerLimit; i <= upperLimit; i++){
+        for (int i = lowerLimit; i <= upperLimit; i++){
             checkedListsCount++;
             if (skds.isInBlackListServer(i, ipaddress)){
                 blackListOcurrences.add(i);
+                synchronized (hostValidator) {
+                    hostValidator.setOcurrencesCount(hostValidator.getOcurrencesCount() + 1);
+                }
             }
+            if (checkTrustworthy()) {
+                return;
+            }
+        }
+    }
+
+    private boolean checkTrustworthy() {
+        synchronized (hostValidator) {
+            return hostValidator.getOcurrencesCount() >= HostBlackListsValidator.BLACK_LIST_ALARM_COUNT;
         }
     }
 
