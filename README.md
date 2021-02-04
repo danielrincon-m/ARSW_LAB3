@@ -12,6 +12,7 @@ Este laboratorio tiene como fin que el estudiante conozca y aplique conceptos pr
 ### Dependencias:
 
 * [Ejercicio Introducción al paralelismo - Hilos - BlackList Search](https://github.com/ARSW-ECI-beta/PARALLELISM-JAVA_THREADS-INTRODUCTION_BLACKLISTSEARCH)
+
 #### Parte I – Antes de terminar la clase.
 
 Control de hilos con wait/notify. Productor/consumidor.
@@ -20,15 +21,20 @@ Control de hilos con wait/notify. Productor/consumidor.
 
 
 ![](https://github.com/danielrincon-m/ARSW_LAB3/blob/master/Img/I-1.1.png)
-
+> En esta imagen se evidecia que el consumo de PC es de 2%.
 
 2. Haga los ajustes necesarios para que la solución use más eficientemente la CPU, teniendo en cuenta que -por ahora- la producción es lenta y el consumo es rápido. Verifique con JVisualVM que el consumo de CPU se reduzca.
 ![](https://github.com/danielrincon-m/ARSW_LAB3/blob/master/Img/I-1.2.png)
+> En esta imagen se evidecia que el consumo de PC es de menor al 1%, presentando un consumo interior a la prueba anterior.
+
+
 3. Haga que ahora el productor produzca muy rápido, y el consumidor consuma lento. Teniendo en cuenta que el productor conoce un límite de Stock (cuantos elementos debería tener, a lo sumo en la cola), haga que dicho límite se respete. Revise el API de la colección usada como cola para ver cómo garantizar que dicho límite no se supere. Verifique que, al poner un límite pequeño para el 'stock', no haya consumo alto de CPU ni errores.
 
 ![](https://github.com/danielrincon-m/ARSW_LAB3/blob/master/Img/I-2.1.png)
+> Funcionamiento de forma regular.
 
-![](https://github.com/danielrincon-m/ARSW_LAB3/blob/master/Img/I-2.1.png)
+![](https://github.com/danielrincon-m/ARSW_LAB3/blob/master/Img/I-2.2.png)
+> Modificación productor produzca muy rápido
 
 #### Parte II. – Antes de terminar la clase.
 
