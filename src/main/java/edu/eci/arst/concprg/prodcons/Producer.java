@@ -22,7 +22,7 @@ public class Producer extends Thread {
     private Random rand=null;
     private final long stockLimit;
 
-    public Producer(Queue<Integer> queue,long stockLimit) {
+    public Producer(Queue<Integer> queue, long stockLimit) {
         this.queue = queue;
         rand = new Random(System.currentTimeMillis());
         this.stockLimit=stockLimit;
@@ -34,14 +34,18 @@ public class Producer extends Thread {
 
             dataSeed = dataSeed + rand.nextInt(100);
             System.out.println("Producer added " + dataSeed);
-            queue.add(dataSeed);
-            
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
+            if (queue.size() < stockLimit) {
+                try {
+                    queue.add(dataSeed);
+                } catch (IllegalStateException e) {
+                    Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, e);
+                }
             }
-
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, e);
+            }
         }
     }
 }
