@@ -1,6 +1,6 @@
-package edu.eci.arsw.blacklistvalidator;
+package edu.eci.blacklist.blacklistvalidator;
 
-import edu.eci.arsw.spamkeywordsdatasource.HostBlacklistsDataSourceFacade;
+import edu.eci.blacklist.spamkeywordsdatasource.HostBlacklistsDataSourceFacade;
 
 import java.util.LinkedList;
 
@@ -32,7 +32,7 @@ public class ThreadValidator extends Thread {
 
     @Override
     public void run() {
-        HostBlacklistsDataSourceFacade skds=HostBlacklistsDataSourceFacade.getInstance();
+        HostBlacklistsDataSourceFacade skds = HostBlacklistsDataSourceFacade.getInstance();
         checkedListsCount = 0;
 
         for (int i=lowerLimit; i <= upperLimit; i++){

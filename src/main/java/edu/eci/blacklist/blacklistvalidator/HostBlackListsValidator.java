@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.eci.arsw.blacklistvalidator;
+package edu.eci.blacklist.blacklistvalidator;
 
-import edu.eci.arsw.spamkeywordsdatasource.HostBlacklistsDataSourceFacade;
+import edu.eci.blacklist.spamkeywordsdatasource.HostBlacklistsDataSourceFacade;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
