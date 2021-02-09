@@ -9,6 +9,8 @@ public class Immortal extends Thread {
 
     private final Semaphore semaphore;
 
+    private boolean active = true;
+
     private int health;
 
     private int defaultDamageValue;
@@ -36,17 +38,18 @@ public class Immortal extends Thread {
             Immortal im;
 
             int myIndex = immortalsPopulation.indexOf(this);
-
             int nextFighterIndex = r.nextInt(immortalsPopulation.size());
-
             //avoid self-fight
-            if (nextFighterIndex == myIndex) {
-                nextFighterIndex = ((nextFighterIndex + 1) % immortalsPopulation.size());
+            while (!immortalsPopulation.get(nextFighterIndex).isActive() || nextFighterIndex == myIndex) {
+                nextFighterIndex = r.nextInt(immortalsPopulation.size());
+//                nextFighterIndex = ((nextFighterIndex + 1) % immortalsPopulation.size());
             }
-
             im = immortalsPopulation.get(nextFighterIndex);
 
             this.fight(myIndex, nextFighterIndex, im);
+            if (!this.isActive()){
+                return;
+            }
 
             try {
                 this.checkPause();
@@ -54,9 +57,7 @@ public class Immortal extends Thread {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
         }
-
     }
 
     public void fight(int myIndex, int otherIndex, Immortal i2) {
@@ -76,7 +77,7 @@ public class Immortal extends Thread {
     }
 
     private void exchangeHealth(Immortal i2) {
-        if (i2.getHealth() > 0) {
+        if (i2.isActive() && this.isActive()) {
             i2.changeHealth(i2.getHealth() - defaultDamageValue);
             this.health += defaultDamageValue;
             updateCallback.processReport("Fight: " + this + " vs " + i2 + "\n");
@@ -87,6 +88,9 @@ public class Immortal extends Thread {
 
     public void changeHealth(int v) {
         health = v;
+        if (health <= 0) {
+            active = false;
+        }
     }
 
     public int getHealth() {
@@ -107,4 +111,7 @@ public class Immortal extends Thread {
         }
     }
 
+    public boolean isActive() {
+        return active;
+    }
 }

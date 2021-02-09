@@ -77,6 +77,18 @@ public class ControlFrame extends JFrame {
 
                 semaphore.pause();
                 int sum = 0;
+
+                for (Immortal im : immortals) {
+                    if (im.isActive()) {
+                        while (im.getState() != Thread.State.WAITING) {
+                            try {
+                                Thread.sleep(1);
+                            } catch (InterruptedException interruptedException) {
+                                interruptedException.printStackTrace();
+                            }
+                        }
+                    }
+                }
                 for (Immortal im : immortals) {
                     sum += im.getHealth();
                 }
