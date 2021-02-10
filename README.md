@@ -66,7 +66,7 @@ Sincronización y Dead-Locks.
 
 ![](https://github.com/danielrincon-m/ARSW_LAB3/blob/master/Img/II-Sin%20optimización.png)
 
-![](https://github.com/danielrincon-m/ARSW_LAB3/blob/master/Img/II-con%20optimizacion.png)
+![](https://github.com/danielrincon-m/ARSW_LAB3/blob/master/Img/II-Sin%20optimización.png)
 
 3. Ejecute la aplicación y verifique cómo funcionan las opción ‘pause and check’. Se cumple el invariante?.
 
