@@ -90,7 +90,7 @@ Sincronización y Dead-Locks.
 8. Plantee una estrategia para corregir el problema antes identificado (puede revisar de nuevo las páginas 206 y 207 de _Java Concurrency in Practice_).
 
 9. Una vez corregido el problema, rectifique que el programa siga funcionando de manera consistente cuando se ejecutan 100, 1000 o 10000 inmortales. Si en estos casos grandes se empieza a incumplir de nuevo el invariante, debe analizar lo realizado en el paso 4.
-## Si se cumple el invariante
+### Si se cumple el invariante
 ### para 100:
 ![](https://github.com/danielrincon-m/ARSW_LAB3/blob/master/Img/III.9.100.png)
 ### para 1000:
