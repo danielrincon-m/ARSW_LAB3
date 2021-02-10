@@ -118,6 +118,17 @@ public class ControlFrame extends JFrame {
 
         JButton btnStop = new JButton("STOP");
         btnStop.setForeground(Color.RED);
+        btnStop.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                for (Immortal i : immortals) {
+                    i.setActive(false);
+                }
+                btnStart.setEnabled(true);
+                output.setText("");
+                statisticsLabel.setText("Immortals total health:");
+            }
+        });
+
         toolBar.add(btnStop);
 
         scrollPane = new JScrollPane();
@@ -181,7 +192,6 @@ class TextAreaUpdateReportCallback implements ImmortalUpdateReportCallback {
         );
 
     }
-
 }
 
 class Semaphore {

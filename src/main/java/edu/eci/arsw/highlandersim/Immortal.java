@@ -34,7 +34,7 @@ public class Immortal extends Thread {
 
     public void run() {
 
-        while (true) {
+        while (active) {
             Immortal im;
 
             int myIndex = immortalsPopulation.indexOf(this);
@@ -47,9 +47,6 @@ public class Immortal extends Thread {
             im = immortalsPopulation.get(nextFighterIndex);
 
             this.fight(myIndex, nextFighterIndex, im);
-            if (!this.isActive()){
-                return;
-            }
 
             try {
                 this.checkPause();
@@ -113,5 +110,9 @@ public class Immortal extends Thread {
 
     public boolean isActive() {
         return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }
