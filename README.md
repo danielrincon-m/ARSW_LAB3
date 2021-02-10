@@ -65,12 +65,9 @@ Sincronización y Dead-Locks.
 	Valor del Invariante= N*DEFAULT_IMMORTAL_HEALTH
 
 ![](https://github.com/danielrincon-m/ARSW_LAB3/blob/master/Img/II-Sin%20optimización.png)
-![](https://github.com/danielrincon-m/ARSW_LAB3/blob/master/Img/II-Sin%20optimización.png)
 
 3. Ejecute la aplicación y verifique cómo funcionan las opción ‘pause and check’. Se cumple el invariante?
 > No el invariante no se cumple
-
-![](https://github.com/danielrincon-m/ARSW_LAB3/blob/master/Img/III-31.PNG)
 
 ![](https://github.com/danielrincon-m/ARSW_LAB3/blob/master/Img/III.31.PNG)
 
