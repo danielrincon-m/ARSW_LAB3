@@ -1,0 +1,5 @@
+Condición de carrera:
+Cuando se presentan muchos imortales estos siguen corriendo a la par con los importales que estan vivos.
+Cuando estos hilos siguen en ejecución continua consumiendo recursos de la maquina.
+
+
